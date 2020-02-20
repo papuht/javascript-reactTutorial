@@ -8,7 +8,10 @@ const Statistic = ({action, hyvä, huono, neutraali}) => {
 	if (hyvä === 0 && huono === 0 && neutraali === 0) {
 	
 	return (
-		<h1>  </h1>
+	<div>
+		
+	
+	</div>
 	)
 	
 	
@@ -17,14 +20,15 @@ const Statistic = ({action, hyvä, huono, neutraali}) => {
 	
 	
 	return (
-		<table>
-			<tbody>
-			<tr>
-			<td>{action}</td>
-			</tr>
-			</tbody>
-		</table>
-		)
+		<div>
+			<p>{action}</p>
+		
+		
+		</div>
+	
+	
+	
+	)
 	
 }
 
@@ -34,13 +38,13 @@ const Statistics = ({hyvä, huono, neutraali}) => {
 	if (hyvä === 0 && huono === 0 && neutraali === 0) {
 	
 	return (
+	<div>
+		<p> Statistiikka:</p>
 	
-		
-		<h1>Statistiikka</h1>
-		
+		<p>Ei näytettävää</p>
 		
 	
-	
+	</div>
 	)
 	
 	
@@ -49,29 +53,13 @@ const Statistics = ({hyvä, huono, neutraali}) => {
 	
 	return (
 	<div>
-	<h1> Statistiikka: </h1>
-	<table>
-		
-		<tbody>
-		<tr>
-			<td>Hyvä:</td>
-			<td>Huono:</td>
-			<td>Neutraali:</td>
-  
-		</tr>
-		
-		<tr> 
-		
-			<td>{hyvä}</td>
-			<td>{huono}</td>
-			<td>{neutraali}</td>
-		</tr>
-		</tbody>
-		</table>
-		
+		<p>Statistiikka:</p>
+	
+		<p>Hyvä: {hyvä}</p>
+		<p>Huono: {huono}</p>
+		<p>Neutraali: {neutraali}</p>
+	
 	</div>
-	
-	
 	)
 	
 }
@@ -80,12 +68,12 @@ const Button = ({handleClick, texti}) => {
 	
 	
 	return (
-	
+	<div>
         
 	
 	<button onClick={handleClick}> {texti} </button>
 	
-	
+	</div>
 	)
 }
 
@@ -120,9 +108,9 @@ class App extends React.Component {
 		
 		return (
 			
-			
+			<div>
 			<p>Keskiarvo: {tulos}</p>
-			 
+			</div> 
 		)
 		
 		
@@ -134,9 +122,9 @@ class App extends React.Component {
 	
 	return (
 			
-			
+			<div>
 			<p>Hyvien osuus: {tulos1} %</p>
-			 
+			</div> 
 		)
 	
 	
@@ -151,8 +139,9 @@ class App extends React.Component {
 
   render() {
     return (
-    <div>  
-	<h1> Anna palautetta: </h1>
+      <div>
+        
+	<p> Anna palautetta: </p>
 	<Button handleClick = {this.asetaHyvää(this.state.hyvä +1)} texti = "Hyvä" />
 	<Button handleClick = {this.asetaHuono(this.state.huono +1)} texti = "Huono" />
 	<Button handleClick = {this.asetaNeutraali(this.state.neutraali +1)} texti = "Neutraali" />

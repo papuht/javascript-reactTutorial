@@ -3,75 +3,36 @@ import ReactDOM from 'react-dom';
 
 
 
-const Statistic = ({action, hyvä, huono, neutraali}) => {
+const Statistic = ({action}) => {
 	
-	if (hyvä === 0 && huono === 0 && neutraali === 0) {
+	
 	
 	return (
-		<h1>  </h1>
+		<div>
+			<p>{action}</p>
+		
+		
+		</div>
+	
+	
+	
 	)
-	
-	
-	}
-	
-	
-	
-	return (
-		<table>
-			<tbody>
-			<tr>
-			<td>{action}</td>
-			</tr>
-			</tbody>
-		</table>
-		)
 	
 }
 
 
 
 const Statistics = ({hyvä, huono, neutraali}) => {
-	if (hyvä === 0 && huono === 0 && neutraali === 0) {
-	
-	return (
-	
-		
-		<h1>Statistiikka</h1>
-		
-		
-	
-	
-	)
-	
-	
-	}
-
 	
 	return (
 	<div>
-	<h1> Statistiikka: </h1>
-	<table>
-		
-		<tbody>
-		<tr>
-			<td>Hyvä:</td>
-			<td>Huono:</td>
-			<td>Neutraali:</td>
-  
-		</tr>
-		
-		<tr> 
-		
-			<td>{hyvä}</td>
-			<td>{huono}</td>
-			<td>{neutraali}</td>
-		</tr>
-		</tbody>
-		</table>
-		
+		<p> Statistiikka</p>
+	
+		<p>Hyvä: {hyvä}</p>
+		<p>Huono: {huono}</p>
+		<p>Neutraali: {neutraali}</p>
+	
 	</div>
-	
-	
 	)
 	
 }
@@ -80,12 +41,12 @@ const Button = ({handleClick, texti}) => {
 	
 	
 	return (
-	
+	<div>
         
 	
 	<button onClick={handleClick}> {texti} </button>
 	
-	
+	</div>
 	)
 }
 
@@ -120,9 +81,9 @@ class App extends React.Component {
 		
 		return (
 			
-			
+			<div>
 			<p>Keskiarvo: {tulos}</p>
-			 
+			</div> 
 		)
 		
 		
@@ -134,9 +95,9 @@ class App extends React.Component {
 	
 	return (
 			
-			
+			<div>
 			<p>Hyvien osuus: {tulos1} %</p>
-			 
+			</div> 
 		)
 	
 	
@@ -151,8 +112,9 @@ class App extends React.Component {
 
   render() {
     return (
-    <div>  
-	<h1> Anna palautetta: </h1>
+      <div>
+        
+	<p> Anna palautetta: </p>
 	<Button handleClick = {this.asetaHyvää(this.state.hyvä +1)} texti = "Hyvä" />
 	<Button handleClick = {this.asetaHuono(this.state.huono +1)} texti = "Huono" />
 	<Button handleClick = {this.asetaNeutraali(this.state.neutraali +1)} texti = "Neutraali" />
@@ -160,8 +122,8 @@ class App extends React.Component {
 	
 	<Statistics hyvä = {this.state.hyvä} huono = {this.state.huono} neutraali = {this.state.neutraali} />
 	
-	<Statistic action = {this.laskeKeskiarvo(this.state.hyvä, this.state.huono, this.state.neutraali) } hyvä = {this.state.hyvä} huono = {this.state.huono} neutraali = {this.state.neutraali}  />
-	<Statistic action = {this.laskeProsentti(this.state.hyvä, this.state.huono, this.state.neutraali)} hyvä = {this.state.hyvä} huono = {this.state.huono} neutraali = {this.state.neutraali}/>
+	<Statistic action = {this.laskeKeskiarvo(this.state.hyvä, this.state.huono, this.state.neutraali)} />
+	<Statistic action = {this.laskeProsentti(this.state.hyvä, this.state.huono, this.state.neutraali)} />
 	
 	</div>
 	
