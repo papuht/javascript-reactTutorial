@@ -4,7 +4,7 @@ import axios from 'axios'
     
 
 
-const Person = ({person, removePerson}) => {
+const Person = ({person, action}) => {
 	
 	
 	
@@ -12,7 +12,7 @@ const Person = ({person, removePerson}) => {
 	
 	return (
 	<li>
-		{person.name}   {person.number} <button onClick = {removePerson}> Poista </button>
+		{person.name}   {person.number} <button onClick = {action}> Poista </button>
 	</li>
 	
 	
@@ -64,7 +64,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('did mount')
     axios
-      .get('http://localhost:3001/persons')
+      .get('http://localhost:3001/api/persons')
       .then(response => {
         console.log('promise fulfilled')
         this.setState({ persons: response.data })
@@ -97,7 +97,7 @@ class App extends React.Component {
     number: this.state.newNumber
 	}
 
-	axios.post('http://localhost:3001/persons', person)
+	axios.post('http://localhost:3001/api/persons', person)
 	.then(response => {
     this.setState({
 		persons: this.state.persons.concat(response.data),
@@ -116,28 +116,21 @@ class App extends React.Component {
 
 	removePerson = (id) =>{  
 	return() => {
-    const url = `http://localhost:3001/persons/${id}`
+    const url = `http://localhost:3001/api/persons/${id}`
     const person = this.state.persons.find(p => p.id === {id})
     const removePerson = {person}
 
     axios
       .delete(url, removePerson)
 	  .then(response => {
-		this.setState({
-		persons: this.state.persons.concat(person => person.id === id ? person : response.data)
-    })
+		console.log(response.data)
+		this.setState({persons: this.state.persons})
+		window.location.reload()
       
   }
-	)
-	
-	
-	
-	
-	
-	
-	
+	)}
 	}
-	}
+	
 	
 	
   
@@ -190,7 +183,8 @@ class App extends React.Component {
 		<Person 
 			key = {person.id}
 			person = {person}
-			removePerson ={this.removePerson(person.id)} 
+			action = {this.removePerson(person.id)}
+			
 			
 			
 			/>
